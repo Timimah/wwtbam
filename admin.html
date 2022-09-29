@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who wants to Be a Milliionaire</title>
+    <link rel="stylesheet" href="/bootstrap.css">
+    <link rel="stylesheet" href="milli.css">
+</head>
+<body onload="test()" class="row">
+    
+    <form class="form my-3 w-50 mx-auto p-5">
+        <div class="text-light text-center mb-5 p-3 head-nav">
+            Welcome to the Admin Page. You can set questions here.
+            <div class="modal-nav my-2">
+                <div class="nav justify-content-center nav-tabs">
+                <a class="nav-link text-light" href="#" onclick="showTF()">True or False</a>
+                <a class="nav-link text-light" href="#" onclick="showMC()">Multiple Choice</a>
+                <a class="nav-link text-light" href="#" onclick="showFF()">Fastest Finger</a>
+                <a class="nav-link text-light" href="index.html" target="_self"> Sign Out</a>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="trueOrFalse">
+            <input class="form-control text-center" type="text" name="" id="tfQuestion" placeholder="Question"><br>
+            <input class="form-control text-center" type="text" name="" id="tfAnswer" placeholder="Answer"><br>
+            <input class="form-control text-center" type="text" name="" id="tfoption_a" placeholder="Option A"><br>
+            <input class="form-control text-center" type="text" name="" id="tfoption_b" placeholder="Option B"><br>
+            <button class="form-control text-center w-50 btn btn-light fs-5" type="button" onclick="setQuestion()" style="color: rgba(65, 105, 255, 0.8);">Set Question</button>
+        </div> -->
+        <div id="multiChoice">
+            <input class="form-control text-center" type="text" name="" id="mcQuestion" placeholder="Question"><br>
+        <input class="form-control text-center" type="text" name="" id="mcAnswer" placeholder="Answer"><br>
+        <input class="form-control text-center" type="text" name="" id="mcoption_a" placeholder="Option A"><br>
+        <input class="form-control text-center" type="text" name="" id="mcoption_b" placeholder="Option B"><br>
+        <input class="form-control text-center" type="text" name="" id="mcoption_c" placeholder="Option A"><br>
+        <input class="form-control text-center" type="text" name="" id="mcoption_d" placeholder="Option D"><br>
+        <button class="form-control text-center w-50 btn btn-light fs-5" type="button" onclick="setQuestion()" style="color: rgba(65, 105, 255, 0.8);">Set Question</button>
+        </div>
+        <!-- <div id="fastestFinger" style="display: none;">
+            <input class="form-control text-center" type="text" name="" id="ffQuestion" placeholder="Question"><br>
+            <input class="form-control text-center" type="text" name="" id="ffAnswer" placeholder="Answer"><br>
+            <input class="form-control text-center" type="text" name="" id="ffoption_a" placeholder="Option A"><br>
+            <input class="form-control text-center" type="text" name="" id="ffoption_b" placeholder="Option B"><br>
+            <input class="form-control text-center" type="text" name="" id="ffoption_c" placeholder="Option A"><br>
+            <input class="form-control text-center" type="text" name="" id="ffoption_d" placeholder="Option D"><br>
+            <button class="form-control text-center w-50 btn btn-light fs-5" type="button" onclick="setQuestion()" style="color: rgba(65, 105, 255, 0.8);">Set Question</button>
+        </div> -->
+    </form>
+    <div id="scoreBoard" class="score_board w-25" style="height: 20em;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis vel dicta facilis aperiam beatae error, quos autem sit aspernatur aliquam architecto, earum velit, maiores laudantium quae est sequi vitae?</div>
+</body>
+<script src="admin.js"></script>
+<script src="/bootstrap.js"></script>
+</html>
