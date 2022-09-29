@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap.css">
+</head>
+<body onload="getQuestions()">
+    <div>
+        <div class="bg-dark w-100 text-light text-center" id="questionDisp"></div>
+        <div class="form-control-sm btn btn-secondary" type="text" id="ft_option" onclick="checkOpta()"></div>
+        <div class="form-control-sm btn btn-secondary" type="text" id="sd_option" onclick="checkOptb()"></div>
+        <div class="form-control-sm btn btn-secondary" type="text" id="td_option" onclick="checkOptc()"></div>
+        <div class="form-control-sm btn btn-secondary" type="text" id="fh_option" onclick="checkOptd()"></div><br>
+        <div class="btn btn-dark" onclick="nextQuestion()">NEXT</div>
+    </div>
+</body>
+<script>
+    if(localStorage.saved_questions){
+    allQuestions = JSON.parse(localStorage.getItem("saved_questions"))
+}
+// let rightOpt
+let ftAns
+let sdAns
+let tdAns
+let fhAns
+let correctAns
+let nextQuestion
+let getQuestions = () =>{
+    for (let i = 0; i < allQuestions.length;) {
+        const element = allQuestions[i];
+        questionDisp.innerHTML = element.n_question 
+        ft_option.innerHTML = element.first_option
+        sd_option.innerHTML = element.second_option
+        td_option.innerHTML = element.third_option
+        fh_option.innerHTML = element.fourth_option
+        i++
+        nextQuestion = () =>{
+            // i++
+            alert()
+            const element = allQuestions[i+1];
+            questionDisp.innerText = "" 
+            questionDisp.innerText = element.n_question 
+            ft_option.innerHTML = element.first_option
+            sd_option.innerHTML = element.second_option
+            td_option.innerHTML = element.third_option
+            fh_option.innerHTML = element.fourth_option
+        } 
+    }
+}
+let checkOpta = () =>{
+    // console.log(correctAns)
+    // console.log(ftAns)
+        // console.log(sdAns)
+        // console.log(tdAns)
+        // console.log(fhAns)
+    if(ft_option.innerHTML == correctAns){
+        console.log(ftAns)
+    }
+    else{
+        console.log("Wrong option");
+    }
+}
+let checkOptb = () =>{
+    if(sd_option.innerHTML == correctAns){
+        console.log(sdAns)
+    }
+    else{
+        console.log("Wrong option!");
+    }
+}
+let checkOptc = () =>{
+    if(td_option.innerHTML == correctAns){
+        console.log(tdAns)
+    }
+    else{
+        console.log("Wrong option!!");
+    }
+}
+let checkOptd = () =>{
+    if(fh_option.innerHTML == correctAns){
+        console.log(fhAns)
+    }
+    else{
+        console.log("Wrong option!!!");
+    }
+}
+</script>
+</html>

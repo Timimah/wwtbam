@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap.css">
+    <link rel="stylesheet" href="milli.css">
+</head>
+<!--  -->
+<body onload="themeSong()">
+  <audio src="audio/main_theme.mp3" id="mainTheme"></audio>
+  <audio src="audio/lets_play.mp3" id="lets_play"></audio>
+  <nav class="nav head-nav justify-content-center p-2">
+    <a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="showHow()">How to Play</a>
+    <a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="showLoginA()">Log In</a>
+    <a class="nav-link text-light me-5" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="showSignup()">Sign Up</a>
+  </nav>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-light" id="staticBackdropLabel">Who wants to be a Millionaire?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="modal-nav my-2">
+            <div class="nav justify-content-center nav-tabs">
+              <a class="nav-link text-light" href="#" onclick="showHow()">How to Play</a>
+              <a class="nav-link text-light" href="#" onclick="showLoginA()">Login as Admin</a>
+              <a class="nav-link text-light" href="#" onclick="showLoginP()">Login as Player</a><a class="nav-link text-light" href="#" onclick="showSignup()">Sign Up</a>
+            </div>
+            <div id="rules">
+              <p class="p-4 text-light">The game is in four stages. Each question has four options and limited time to answer the question. You will see a timer at the top of the play arena. When you choose the right option, the option will be highlighted in green, otherwise it will be highlightedin red.
+              Good luck and God speed! May the force be with you!!
+              </p>
+            </div>
+          <div id="logA"  style="display: none;">
+            <form action="" class="form p-3">
+              <div class="p-2 text-center alert text-light" id="notfound_msg" style="display: none;">User not found
+                <button type="button" class="btn-close btn-light" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <input class="form-control" type="text" placeholder="Username" id="login_name"  oninput="hideuAlert()">
+              <div class="text-light" id="warning_lmsg" style="display: none;">Username cannot be empty</div><br>
+              <input class="form-control" type="password" name="" placeholder="Password" id="login_password"  oninput="hidepAlert()">
+              <div class="text-light" id="warning_lmsg0" style="display: none;">Password cannot be empty</div><br>
+              <button class="form-control btn btn-light w-50 justify-content-center" type="button" onclick="logInA()" style="color: royalblue;">Log In<br> As admin</button>
+            </form>
+          </div>
+          <div id="logP"  style="display: none;">
+            <form action="" class="form p-3">
+              <div class="p-2 text-center alert text-light" id="notfound_msgp" style="display: none;">User not found
+                <button type="button" class="btn-close btn-light" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <input class="form-control" type="text" placeholder="Username" id="login_pname" oninput="hideuAlert()">
+              <div class="text-light" id="warning_lmsgp" style="display: none;">Username cannot be empty</div><br>
+              <input class="form-control" type="password" name="" placeholder="Password" id="login_ppassword" oninput="hidepAlert()">
+              <div class="text-light" id="warning_lmsgp0" style="display: none;">Password cannot be empty</div><br>
+              <button class="form-control btn btn-light w-50 justify-content-center" type="button" onclick="logInP()" style="color: royalblue;">Log In</button>
+            </form>
+          </div>
+          <div id="signup"  style="display: none;">
+            <form action="" class="form p-3">
+              <input class="form-control" type="text" placeholder="Username" id="su_uname">
+              <div class="text-light" id="warning_msg" style="display: none;">Username cannot be empty</div><br>
+              <input class="form-control" type="text" placeholder="Name" id="su_name">
+              <div class="text-light" id="warning_msg0" style="display: none;">Name cannot be empty</div><br>
+              <input class="form-control" type="password" name="" placeholder="Password" id="su_password">
+              <div class="text-light" id="warning_msg1" style="display: none;">Password cannot be empty</div><br>
+              <div class="input-group">
+                <button class="form-control btn btn-light w-25" type="button" onclick="signupAdmin()"  style="color: royalblue;">Sign Up as admin</button>&nbsp;
+                <button class="form-control btn btn-light w-25" type="button" onclick="signupPlayer()"  style="color: royalblue;">Sign Up as a player</button>
+              </div>
+            </form>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-light text-center container game-rules">
+    <p>
+      <h1 class="p-4">
+        Rules of the Game “Who Wants to Be a Millionaire?”
+      </h1>
+    </p>
+    <h5>
+      Who Wants to Be a Millionaire? is a quiz comdivetition where contestants have to correctly answer a series of multiple-choice questions in order to advance to the next level / question. There are 15 questions in total and each question is worth a specific amount of money and no time limit is placed on contestants to come up with an answer. Contestants also get three Lifelines to assist them if they get stuck on a particular question.<br>
+      The Who Wants to Be a Millionaire questions are structured according to five different Levels with each level increasing in difficulty. Each level contains three questions.
+      Questions that are grouped into the same level will all be of similar difficulty. For example: Questions 1-3 make up the first Level and will contain the easiest questions. The second Level (Questions 4 – 6) will be slightly more difficult, followed by the third Level (Questions 7 – 9). The fourth Level (Questions 10-12) will consist of really difficult questions, followed by the fifth, and last, level (Questions 13 – 15) that will pose the most difficult questions of the game.
+    </h5>
+    <h5>
+      It’s important to remember that the questions which make up each level will not necessarily relate to the same or even similar topics, but their overall level of difficulty will be the same. Also note that the question Levels should not be confused with the Safe Havens or the Question Value Structure that are both explained below.
+    </h5>
+    <h5>
+      There are three ‘safe havens’ in the question structure (Questions five, ten and fifteen). Contestants accumulate money with each correct answer, but should the they answer incorrectly before reaching a safe haven, they stand to lose a large amount of winnings. Below is a summary of the question value structure:
+    </h5>
+    <h4>
+      <pre>
+Question 1 $100
+Question 2 $200
+Question 3 $300
+Question 4 $500
+<strong>Question 5 - $1,000(Safe Haven)</strong>
+      </pre>
+      <h5>If contestants get this question wrong, they leave with nothing. If this question is answered correctly, contestants are guaranteed S1,000 even if the answer incorrectly before reaching the next safe haven at Question 10.</h5>
+    </h4>
+
+    <h4>
+      <pre>
+Question 6 $2,000
+Question 7 $4,000
+Question 8 $8,000
+Question 9 $16,000
+<strong>Question 10 - $32,000 (Safe Haven)</strong>
+      </pre>
+      <h5>If contestants get this question wrong, they leave with $1,000. If this question is answered correctly, contestants are guaranteed S32,000 even if the answer incorrectly before reaching Question 15.</h5>
+    </h4>
+
+    <h4>
+      <pre>
+  Question 11 $64,000
+  Question 12 $125,000
+  Question 13 $250,000
+  Question 14 $500,000
+ <strong> Question 15 - $1,000,000</strong>
+      </pre>
+      <h5>If contestants get this question wrong, they leave with $1,000. If this question is answered correctly, contestants are guaranteed S32,000 even if the answer incorrectly before reaching Question 15.</h5>
+    </h4>
+    
+    <h3>
+      Lifelines
+    </h3>
+    <p>
+      <h5>
+        Contestants are allowed three Lifelines that they can use at any point during the game. Each Lifeline can only be used once.<br>
+        <strong>50/50</strong> – eliminates one correct and one incorrect answer from the multiple-choice selection, leaving the contestant with only one correct and one incorrect option. This means they have a 50/50 chance.<br>
+        <strong>Ask the Audience</strong> – the audience is asked the same question as the contestant and a quick poll is done to show their answers. If the chart shows a clear majority for a specific answer, this Lifeline can be extremely helpful, but it’s still up to the contestant whether or not to go with the results obtained from the audience.<br>
+        <strong>Phone a Friend</strong> – Contestants are allowed to make a 30-second call to a friend or family member and ask them if they know the answer to the question.
+      </h5>
+    </p>
+  </div>
+</body>
+<script src="index.js"></script>
+<script src="/bootstrap.js"></script>
+</html>
