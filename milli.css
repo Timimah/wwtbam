@@ -1,0 +1,13 @@
+body{
+    background: url(./images/wwtbam.jpg) no-repeat fixed;
+    background-size: cover;
+}
+.head-nav, .modal-content{
+    background-color: rgba(65, 105, 255, 0.8);
+}
+.game-rules{
+    background-color: rgba(65, 105, 255, 0.8);
+}
+form, score_board{
+    background-color: rgba(65, 105, 225, 0.9);
+}
